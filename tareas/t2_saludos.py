@@ -17,4 +17,3 @@ class SaludoEncapsulado:
 def saludoAaron():
     saludo2 = SaludoEncapsulado()
     saludo2.imprimir()
-
