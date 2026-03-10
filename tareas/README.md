@@ -1,5 +1,7 @@
 # Servicio SecureAccess (Basic Auth)
 
+_Nota: ajuste mínimo para PR de prueba._
+
 Este servicio expone un flujo de login con Basic Auth (Base64) usando FastAPI, SQLite y las vistas `20260302_access.html` y `20260302_platform.html`.
 
 ## Credenciales por defecto
