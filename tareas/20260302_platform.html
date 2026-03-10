@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SecureAccess Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4">
+<div class="flex items-center gap-2">
+<div class="bg-primary text-white p-2 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">shield_lock</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">SecureAccess</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden border-2 border-primary/20">
+<img alt="User Profile" data-alt="User profile avatar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRHk3Ia-oSBpDz3VnJ51UnuJtelniwmRTUaUu_mKX2XQqxVXTNfyJTWI97b3zAHHjGchYDyS6ASVQPjC0lRmZ40Kp8DG6M2oVewaRmC9OKXYBl8anhrxHnc4vk-H70gyS77jwWLKUHriWilMZaT4e7OysdcqIuL88FNuYt3siJfhMut1NiZhx0_VIjdIf4jmHTDAEy7kYAuZLr5DxXpdlhk8RCrqedSnY3UxES_hdwM2gDVPpCmXT3SZBSE0yzi7ojN2WrmoSbPrs"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-4 pb-24 pt-6 max-w-2xl mx-auto w-full">
+<!-- Welcome Header -->
+<section class="mb-8">
+<h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100">Welcome back, Admin</h2>
+<p class="mt-1 text-slate-500 dark:text-slate-400">System status: <span class="text-emerald-500 font-medium">All systems normal</span></p>
+</section>
+<!-- Status Card -->
+<div class="mb-8 p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-emerald-100 dark:bg-emerald-900/30 p-3 rounded-full text-emerald-600 dark:text-emerald-400">
+<span class="material-symbols-outlined text-3xl active-icon">verified_user</span>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Property Security</p>
+<p class="text-xl font-bold text-slate-900 dark:text-slate-100">Armed &amp; Secured</p>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-semibold transition-colors">
+                    Disarm
+                </button>
+</div>
+<!-- Access Control Grid -->
+<section class="mb-8">
+<h3 class="text-lg font-bold mb-4 text-slate-900 dark:text-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">grid_view</span> Quick Actions
+                </h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Action Card 1 -->
+<button class="flex flex-col items-start p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary/50 transition-all text-left">
+<div class="bg-primary/10 text-primary p-3 rounded-lg mb-3">
+<span class="material-symbols-outlined">gate</span>
+</div>
+<span class="font-bold text-slate-900 dark:text-slate-100">Main Gate</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">Status: Closed</span>
+</button>
+<!-- Action Card 2 -->
+<button class="flex flex-col items-start p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary/50 transition-all text-left">
+<div class="bg-primary/10 text-primary p-3 rounded-lg mb-3">
+<span class="material-symbols-outlined">videocam</span>
+</div>
+<span class="font-bold text-slate-900 dark:text-slate-100">Cameras</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">4 active feeds</span>
+</button>
+<!-- Action Card 3 -->
+<button class="flex flex-col items-start p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary/50 transition-all text-left">
+<div class="bg-primary/10 text-primary p-3 rounded-lg mb-3">
+<span class="material-symbols-outlined">list_alt</span>
+</div>
+<span class="font-bold text-slate-900 dark:text-slate-100">Access Logs</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">View history</span>
+</button>
+<!-- Action Card 4 -->
+<button class="flex flex-col items-start p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary/50 transition-all text-left">
+<div class="bg-primary/10 text-primary p-3 rounded-lg mb-3">
+<span class="material-symbols-outlined">key</span>
+</div>
+<span class="font-bold text-slate-900 dark:text-slate-100">Digital Key</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 mt-1">Generate OTP</span>
+</button>
+</div>
+</section>
+<!-- Activity Preview -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100">Recent Activity</h3>
+<a class="text-primary text-sm font-medium" href="#">See all</a>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 bg-white dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">sensor_door</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">Side Entrance Opened</p>
+<p class="text-xs text-slate-500">Today, 2:45 PM</p>
+</div>
+</div>
+<span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded">Success</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-white dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">Visitor Access: John Doe</p>
+<p class="text-xs text-slate-500">Today, 11:12 AM</p>
+</div>
+</div>
+<span class="text-xs font-medium px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded">Expired</span>
+</div>
+</div>
+</section>
+<!-- User Management -->
+<section class="mt-10">
+<h3 class="text-lg font-bold mb-4 text-slate-900 dark:text-slate-100">User Management</h3>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-4">
+<div class="hidden rounded-lg border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700" id="user-status"></div>
+<div class="grid grid-cols-1 gap-3">
+<input class="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm" id="user-username" placeholder="username" type="text"/>
+<input class="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2 text-sm" id="user-password" placeholder="password" type="password"/>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="bg-primary text-white px-3 py-2 rounded-lg text-sm" id="create-user">Crear</button>
+<button class="bg-slate-900 text-white px-3 py-2 rounded-lg text-sm" id="update-user">Actualizar</button>
+<button class="bg-red-500 text-white px-3 py-2 rounded-lg text-sm" id="delete-user">Eliminar</button>
+<button class="border border-slate-200 dark:border-slate-700 px-3 py-2 rounded-lg text-sm" id="list-users">Listar</button>
+</div>
+<pre class="bg-slate-100 dark:bg-slate-800 text-xs p-3 rounded-lg overflow-x-auto" id="user-list"></pre>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-background-dark/95 backdrop-blur-lg px-4 pb-6 pt-2 z-50">
+<div class="max-w-2xl mx-auto flex items-center justify-between">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 transition-colors text-primary" href="#">
+<span class="material-symbols-outlined active-icon">home</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 transition-colors text-slate-400 dark:text-slate-500 hover:text-primary" href="#">
+<span class="material-symbols-outlined">devices</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Devices</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 transition-colors text-slate-400 dark:text-slate-500 hover:text-primary" href="#">
+<span class="material-symbols-outlined">history</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Activity</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 transition-colors text-slate-400 dark:text-slate-500 hover:text-primary" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Settings</p>
+</a>
+</div>
+</nav>
+</div>
+<script>
+    const token = sessionStorage.getItem('basicAuth');
+    const statusBox = document.getElementById('user-status');
+    const userList = document.getElementById('user-list');
+
+    const showStatus = (message, isError = false) => {
+        statusBox.textContent = message;
+        statusBox.classList.remove('hidden');
+        statusBox.classList.toggle('border-emerald-200', !isError);
+        statusBox.classList.toggle('bg-emerald-50', !isError);
+        statusBox.classList.toggle('text-emerald-700', !isError);
+        statusBox.classList.toggle('border-red-200', isError);
+        statusBox.classList.toggle('bg-red-50', isError);
+        statusBox.classList.toggle('text-red-700', isError);
+    };
+
+    const authHeaders = token ? { Authorization: `Basic ${token}` } : null;
+
+    const requireAuth = () => {
+        if (!authHeaders) {
+            showStatus('No hay token. Vuelve a iniciar sesión.', true);
+            return false;
+        }
+        return true;
+    };
+
+    const getPayload = () => {
+        const username = document.getElementById('user-username').value.trim();
+        const password = document.getElementById('user-password').value;
+        return { username, password };
+    };
+
+    document.getElementById('create-user').addEventListener('click', async () => {
+        if (!requireAuth()) return;
+        const { username, password } = getPayload();
+        if (!username || !password) {
+            showStatus('Completa usuario y contraseña.', true);
+            return;
+        }
+        const response = await fetch('/users', {
+            method: 'POST',
+            headers: { ...authHeaders, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        });
+        const data = await response.json();
+        showStatus(response.ok ? `Usuario creado: ${data.username}` : data.detail, !response.ok);
+    });
+
+    document.getElementById('update-user').addEventListener('click', async () => {
+        if (!requireAuth()) return;
+        const { username, password } = getPayload();
+        if (!username || !password) {
+            showStatus('Completa usuario y contraseña.', true);
+            return;
+        }
+        const response = await fetch(`/users/${encodeURIComponent(username)}`, {
+            method: 'PUT',
+            headers: { ...authHeaders, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password })
+        });
+        const data = await response.json();
+        showStatus(response.ok ? `Usuario actualizado: ${data.username}` : data.detail, !response.ok);
+    });
+
+    document.getElementById('delete-user').addEventListener('click', async () => {
+        if (!requireAuth()) return;
+        const { username } = getPayload();
+        if (!username) {
+            showStatus('Indica el usuario a eliminar.', true);
+            return;
+        }
+        const response = await fetch(`/users/${encodeURIComponent(username)}`, {
+            method: 'DELETE',
+            headers: authHeaders
+        });
+        const data = await response.json();
+        showStatus(response.ok ? `Usuario eliminado: ${data.username}` : data.detail, !response.ok);
+    });
+
+    document.getElementById('list-users').addEventListener('click', async () => {
+        if (!requireAuth()) return;
+        const response = await fetch('/users', { headers: authHeaders });
+        const data = await response.json();
+        if (!response.ok) {
+            showStatus(data.detail, true);
+            return;
+        }
+        userList.textContent = JSON.stringify(data.users, null, 2);
+        showStatus('Lista de usuarios cargada.');
+    });
+
+    if (!token) {
+        showStatus('No hay token. Vuelve a iniciar sesión.', true);
+    }
+</script>
+</body></html>

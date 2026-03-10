@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6324eb",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#161121",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h1 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight flex-1 text-center pr-10">Escanear Documento</h1>
+</div>
+<main class="flex-1 flex flex-col p-6 max-w-2xl mx-auto w-full">
+<input id="file-input" type="file" accept="image/png,image/jpeg" class="hidden" />
+<!-- Upload Area -->
+<div class="flex flex-col mb-8">
+<div id="upload-area" class="flex flex-col items-center gap-6 rounded-xl border-2 border-dashed border-primary/30 dark:border-primary/20 bg-white dark:bg-slate-900 px-6 py-16 transition-colors hover:border-primary/50 cursor-pointer">
+<div class="bg-primary/10 p-5 rounded-full">
+<span class="material-symbols-outlined text-primary text-5xl">add_a_photo</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<p class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight text-center">Toca para subir o tomar una foto</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal text-center">Sube un archivo JPG o PNG para comenzar el proceso de OCR</p>
+<p id="file-name" class="text-primary text-sm font-semibold"></p>
+</div>
+<button class="flex min-w-[140px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold tracking-wide shadow-lg shadow-primary/20">
+<span class="truncate">Tomar Foto</span>
+</button>
+</div>
+</div>
+<div class="mb-6">
+    <label for="mode" class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Modo de procesamiento</label>
+    <select id="mode" class="mt-2 w-full rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 text-sm">
+        <option value="document" selected>Credencial (Nombre y domicilio)</option>
+        <option value="char">Carácter individual (CNN)</option>
+    </select>
+</div>
+<!-- Tips Section -->
+<div class="mb-8">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight pb-4">Consejos para un mejor OCR</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Tip 1 -->
+<div class="flex flex-col gap-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 items-center text-center">
+<div class="text-primary bg-primary/10 p-3 rounded-full mb-1">
+<span class="material-symbols-outlined text-3xl">light_mode</span>
+</div>
+<h2 class="text-slate-800 dark:text-slate-200 text-sm font-semibold">Buena iluminación</h2>
+</div>
+<!-- Tip 2 -->
+<div class="flex flex-col gap-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 items-center text-center">
+<div class="text-primary bg-primary/10 p-3 rounded-full mb-1">
+<span class="material-symbols-outlined text-3xl">wb_twilight</span>
+</div>
+<h2 class="text-slate-800 dark:text-slate-200 text-sm font-semibold">Evita sombras</h2>
+</div>
+<!-- Tip 3 -->
+<div class="flex flex-col gap-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 items-center text-center">
+<div class="text-primary bg-primary/10 p-3 rounded-full mb-1">
+<span class="material-symbols-outlined text-3xl">align_horizontal_left</span>
+</div>
+<h2 class="text-slate-800 dark:text-slate-200 text-sm font-semibold">Texto alineado</h2>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="mt-auto pt-6 flex flex-col gap-3 w-full">
+<button id="process-btn" class="flex items-center justify-center overflow-hidden rounded-xl h-14 px-6 bg-primary text-white text-base font-bold leading-normal tracking-wide w-full shadow-lg shadow-primary/30 active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined mr-2">document_scanner</span>
+<span class="truncate">Procesar Imagen</span>
+</button>
+<button id="gallery-btn" class="flex items-center justify-center overflow-hidden rounded-xl h-14 px-6 bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-base font-bold leading-normal tracking-wide w-full active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined mr-2">photo_library</span>
+<span class="truncate">Subir desde la Galería</span>
+</button>
+</div>
+<div id="result" class="mt-6 hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5">
+    <p class="text-slate-900 dark:text-slate-100 text-base font-semibold">Resultado</p>
+    <p id="result-text" class="text-slate-600 dark:text-slate-300 text-sm mt-2"></p>
+    <div id="result-document" class="mt-4 hidden">
+        <p class="text-slate-800 dark:text-slate-200 text-sm"><span class="font-semibold">Nombre:</span> <span id="result-name"></span></p>
+        <p class="text-slate-800 dark:text-slate-200 text-sm mt-2"><span class="font-semibold">Domicilio:</span> <span id="result-address"></span></p>
+    </div>
+</div>
+<div class="h-8"></div>
+</main>
+</div>
+<script>
+    const fileInput = document.getElementById('file-input');
+    const uploadArea = document.getElementById('upload-area');
+    const galleryBtn = document.getElementById('gallery-btn');
+    const processBtn = document.getElementById('process-btn');
+    const fileName = document.getElementById('file-name');
+    const result = document.getElementById('result');
+    const resultText = document.getElementById('result-text');
+    const resultDocument = document.getElementById('result-document');
+    const resultName = document.getElementById('result-name');
+    const resultAddress = document.getElementById('result-address');
+    const modeSelect = document.getElementById('mode');
+
+    const openFilePicker = () => fileInput.click();
+
+    uploadArea.addEventListener('click', openFilePicker);
+    galleryBtn.addEventListener('click', openFilePicker);
+
+    fileInput.addEventListener('change', () => {
+        const file = fileInput.files[0];
+        if (file) {
+            fileName.textContent = `Archivo seleccionado: ${file.name}`;
+        } else {
+            fileName.textContent = '';
+        }
+    });
+
+    processBtn.addEventListener('click', async () => {
+        const file = fileInput.files[0];
+        if (!file) {
+            alert('Selecciona una imagen primero.');
+            return;
+        }
+
+        result.classList.remove('hidden');
+        resultDocument.classList.add('hidden');
+        resultText.textContent = 'Procesando...';
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            const mode = modeSelect.value;
+            const endpoint = mode === 'document' ? '/predict_document' : '/predict';
+            const response = await fetch(endpoint, { method: 'POST', body: formData });
+            const data = await response.json();
+            if (!response.ok) {
+                resultText.textContent = data.detail || 'Error al procesar la imagen.';
+                return;
+            }
+            if (mode === 'document') {
+                resultText.textContent = data.raw_text || 'Sin texto detectado.';
+                resultName.textContent = data.nombre || 'No detectado';
+                resultAddress.textContent = data.domicilio || 'No detectado';
+                resultDocument.classList.remove('hidden');
+            } else {
+                const confidence = (data.confidence * 100).toFixed(2);
+                resultText.textContent = `Predicción: ${data.prediction} (confianza ${confidence}%)`;
+            }
+        } catch (error) {
+            resultText.textContent = 'No se pudo conectar con el servicio.';
+        }
+    });
+</script>
+</body></html>
