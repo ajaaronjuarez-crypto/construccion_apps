@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Professional Login - Secure Portal</title>
+<!-- Tailwind CSS CDN with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration for Dark Mode and Custom Colors -->
+<script>
+    tailwind.config = {
+      darkMode: 'media',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f4f8',
+              100: '#d9e2ec',
+              500: '#334e68',
+              600: '#243b53',
+              700: '#102a43',
+              800: '#06152a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="typography">
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+<style data-purpose="layout-adjustments">
+    /* Ensure the screen fills the viewport and handles safe areas for iOS */
+    .safe-area-bottom {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    .min-h-screen-ios {
+      min-height: -webkit-fill-available;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-brand-800 text-brand-700 dark:text-brand-50 transition-colors duration-300">
+<!-- BEGIN: Main Login Container -->
+<main class="min-h-screen-ios flex flex-col justify-center px-6 py-12 lg:px-8 max-w-md mx-auto" data-purpose="login-screen-wrapper">
+<!-- BEGIN: Header Section -->
+<header class="text-center mb-10" data-purpose="branding-header">
+<!-- Logo Placeholder -->
+<div class="inline-flex items-center justify-center w-16 h-16 bg-brand-600 dark:bg-brand-500 rounded-2xl shadow-lg mb-6 mx-auto">
+<svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h1 class="text-3xl font-bold tracking-tight text-brand-700 dark:text-white">Secure Access</h1>
+<p class="mt-2 text-sm text-gray-500 dark:text-brand-100">Welcome back. Please enter your details.</p>
+</header>
+<!-- END: Header Section -->
+<!-- BEGIN: Login Form -->
+<section data-purpose="login-form-section">
+<form action="#" class="space-y-6" id="login-form" method="POST">
+<div class="hidden rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700" id="login-error" role="alert"></div>
+<!-- Email Input -->
+<div class="relative">
+<label class="block text-sm font-semibold leading-6 mb-1" for="email">Email Address</label>
+<div class="relative mt-2 rounded-md shadow-sm">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<svg class="h-5 w-5 text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+</svg>
+</div>
+<input autocomplete="email" class="block w-full rounded-xl border-0 py-3 pl-10 text-brand-700 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-600 dark:bg-brand-700 dark:ring-brand-600 dark:text-white sm:text-sm sm:leading-6" id="email" name="email" placeholder="name@company.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="relative">
+<div class="flex items-center justify-between mb-1">
+<label class="block text-sm font-semibold leading-6" for="password">Password</label>
+<div class="text-sm">
+<a class="font-semibold text-brand-600 hover:text-brand-500 dark:text-brand-100" href="#">Forgot password?</a>
+</div>
+</div>
+<div class="relative mt-2 rounded-md shadow-sm">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<svg class="h-5 w-5 text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<input autocomplete="current-password" class="block w-full rounded-xl border-0 py-3 pl-10 text-brand-700 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand-600 dark:bg-brand-700 dark:ring-brand-600 dark:text-white sm:text-sm sm:leading-6" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Login Button -->
+<div class="pt-2">
+<button class="flex w-full justify-center rounded-xl bg-brand-600 px-3 py-3.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600 transition-all duration-200 active:scale-[0.98]" type="submit">
+            Log In
+          </button>
+</div>
+</form>
+</section>
+<!-- END: Login Form -->
+<!-- BEGIN: Social Login Divider -->
+<!-- END: Social Login Divider -->
+<!-- BEGIN: Footer Links -->
+<footer class="mt-10 text-center text-sm text-gray-500 dark:text-brand-100 safe-area-bottom" data-purpose="registration-footer">
+<p>
+        Don't have an account?
+        <a class="font-semibold leading-6 text-brand-600 hover:text-brand-500 dark:text-white" href="#">Start a free trial</a>
+</p>
+</footer>
+<!-- END: Footer Links -->
+</main>
+<!-- END: Main Login Container -->
+<script>
+  const form = document.getElementById('login-form');
+  const errorBanner = document.getElementById('login-error');
+
+  const showError = (message) => {
+    errorBanner.textContent = message;
+    errorBanner.classList.remove('hidden');
+  };
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    errorBanner.classList.add('hidden');
+
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+
+    if (!email || !password) {
+      showError('Ingresa tu email y contraseña.');
+      return;
+    }
+
+  const token = btoa(`${email}:${password}`);
+
+    try {
+      const loginResponse = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          Authorization: `Basic ${token}`
+        }
+      });
+
+      if (!loginResponse.ok) {
+        showError('Credenciales inválidas.');
+        return;
+      }
+
+      sessionStorage.setItem('basicAuth', token);
+
+      const platformResponse = await fetch('/platform', {
+        headers: {
+          Authorization: `Basic ${token}`
+        }
+      });
+
+      if (!platformResponse.ok) {
+        showError('No se pudo cargar la plataforma.');
+        return;
+      }
+
+      const html = await platformResponse.text();
+      history.replaceState({}, '', '/platform');
+      document.open();
+      document.write(html);
+      document.close();
+    } catch (error) {
+      showError('Error de conexión. Intenta de nuevo.');
+    }
+  });
+</script>
+</body></html>
